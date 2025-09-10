@@ -11,6 +11,10 @@ import ReportViewer from './components/Reports/ReportViewer';
 import ErrorBoundary from './components/Common/ErrorBoundary';
 import LoadingSpinner from './components/Common/LoadingSpinner';
 
+// Enhanced Components
+import InteractiveValidation from './components/Validation/InteractiveValidation';
+import EnhancedFileUpload from './components/Upload/EnhancedFileUpload';
+
 // Services
 import { authService } from './services/auth';
 
@@ -119,7 +123,10 @@ function App() {
           <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <Routes>
               <Route path="/" element={<Navigate to="/upload" replace />} />
-              <Route path="/upload" element={<FileUpload />} />
+              {/* Enhanced Routes */}
+              <Route path="/upload" element={<EnhancedFileUpload />} />
+              <Route path="/validation/:sessionId" element={<InteractiveValidation />} />
+              {/* Legacy Routes for backward compatibility */}
               <Route path="/mapping/:sessionId" element={<MappingConfirmation />} />
               <Route path="/audit/:sessionId" element={<AuditDashboard />} />
               <Route path="/reports/:sessionId" element={<ReportViewer />} />

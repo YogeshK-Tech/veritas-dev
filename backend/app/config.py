@@ -4,7 +4,7 @@ import os
 
 class Settings(BaseSettings):
     # Database
-    DATABASE_URL: str = "sqlite:///./veritas.db"
+    DATABASE_URL: str = "sqlite:///./veritas_enhanced.db"
     
     # Security
     SECRET_KEY: str = "your-secret-key-change-in-production"
@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     # AI Services
     GOOGLE_API_KEY: Optional[str] = None
     OPENAI_API_KEY: Optional[str] = None
+    
+    # Enhanced AI Settings
+    enhancement_level: str = "full"
+    ai_processing_timeout: int = 300
+    semantic_similarity_threshold: float = 0.6
     
     # File Storage
     UPLOAD_DIR: str = "./uploads"
@@ -31,5 +36,6 @@ class Settings(BaseSettings):
     
     class Config:
         env_file = ".env"
+        extra = "ignore"  # Ignore extra fields
 
 settings = Settings()
